@@ -132,32 +132,32 @@ const moviesDatabase = {
     {
       title: "Inception",
       year: 2010,
-      image: "https://image.tmdb.org/t/p/w500/9gk7adHYeDMNNGceKc06f6I9xvA.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
     },
     {
       title: "Interstellar",
       year: 2014,
-      image: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCu244myL7l3.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg",
     },
     {
       title: "The Matrix",
       year: 1999,
-      image: "https://image.tmdb.org/t/p/w500/vfnG2dXlzc19txt41GDKSqFeDqe.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg",
     },
     {
       title: "Avatar",
       year: 2009,
-      image: "https://image.tmdb.org/t/p/w500/6ELCZBBKD9kCCiwusMNRubcODkC.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_.jpg",
     },
     {
       title: "Dune",
       year: 2021,
-      image: "https://image.tmdb.org/t/p/w500/d5NXSklXo96JsVh6iOkFsPSfaD.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BNWIyNmU5MGYtZDZmNi00ZjAwLWJlYjgtZTc0ZGIxMDE4ZGYwXkEyXkFqcGc@._V1_.jpg",
     },
     {
       title: "Blade Runner 2049",
       year: 2017,
-      image: "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEsLBQQAGdtjB1UY.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_.jpg",
     },
   ],
 }
