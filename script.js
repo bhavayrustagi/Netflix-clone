@@ -110,7 +110,7 @@ const moviesDatabase = {
     {
       title: "Superbad",
       year: 2007,
-      image: "https://img.freepik.com/free-photo/money-fantasy-scene_23-2151663120.jpg?semt=ais_hybrid&w=740&q=80https://m.media-amazon.com/images/M/MV5BNjk0MzdlZGEtNTRkOC00ZDRiLWJkYjAtMzUzYTRiNzk1YTViXkEyXkFqcGc@._V1_.jpg",
+      image: "https://m.media-amazon.com/images/M/MV5BNjk0MzdlZGEtNTRkOC00ZDRiLWJkYjAtMzUzYTRiNzk1YTViXkEyXkFqcGc@._V1_.jpg",
     },
     {
       title: "The Hangover",
