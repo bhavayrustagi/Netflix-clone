@@ -765,14 +765,12 @@ function initializeGenreFilter() {
 
         if (filter === "all") {
           section.style.display = "block";
-        } else if (sectionId === filter || sectionId === "mylist") {
+        } else if (sectionId === filter) {
           section.style.display = "block";
           // Scroll to the filtered section
-          if (sectionId === filter) {
-            setTimeout(() => {
-              section.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 100);
-          }
+          setTimeout(() => {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 100);
         } else {
           section.style.display = "none";
         }
