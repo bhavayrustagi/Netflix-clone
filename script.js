@@ -567,6 +567,76 @@ function updateUserProfile() {
   }
 }
 
+function getSubscription() {
+  try {
+    return JSON.parse(localStorage.getItem("subscription")) || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function setSubscription(planId) {
+  const plans = {
+    basic: { id: "basic", name: "Basic", price: 199 },
+    standard: { id: "standard", name: "Standard", price: 499 },
+    premium: { id: "premium", name: "Premium", price: 649 },
+  };
+  const selected = plans[planId] || null;
+  if (!selected) return false;
+  localStorage.setItem("subscription", JSON.stringify({ ...selected, active: true }));
+  updateAccountSubscriptionUI();
+  updateSubscribePageUI();
+  return true;
+}
+
+function cancelSubscription() {
+  localStorage.removeItem("subscription");
+  updateAccountSubscriptionUI();
+  updateSubscribePageUI();
+}
+
+function updateAccountSubscriptionUI() {
+  const sub = getSubscription();
+  const statusEl = document.getElementById("subscriptionStatusText");
+  const planEl = document.getElementById("subscriptionPlanName");
+  if (statusEl) statusEl.textContent = sub && sub.active ? "Active" : "Not Subscribed";
+  if (planEl) planEl.textContent = sub && sub.active ? sub.name : "-";
+}
+
+function updateSubscribePageUI() {
+  const sub = getSubscription();
+  const info = document.getElementById("currentSubscriptionInfo");
+  const name = document.getElementById("currentPlanName");
+  if (info) info.style.display = sub && sub.active ? "block" : "none";
+  if (name) name.textContent = sub && sub.active ? sub.name : "None";
+}
+
+function initializeSubscriptionPage() {
+  const plansGrid = document.getElementById("plansGrid");
+  if (plansGrid) {
+    plansGrid.querySelectorAll(".select-plan-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const card = e.target.closest(".plan-card");
+        const planId = card && card.getAttribute("data-plan-id");
+        if (setSubscription(planId)) {
+          showToast(`Subscribed to ${planId} plan successfully!`, "success");
+          switchPage("homePage");
+        } else {
+          showToast("Failed to subscribe. Please try again.", "error");
+        }
+      });
+    });
+  }
+  const cancelBtn = document.getElementById("cancelSubscriptionBtn");
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      cancelSubscription();
+      showToast("Subscription cancelled", "info");
+    });
+  }
+  updateSubscribePageUI();
+}
+
 // Initialize Movies on Home Page with loading animation
 function initializeMovies() {
   // Show skeleton loaders first
@@ -879,6 +949,9 @@ function goToAccount(event) {
     "memberSince"
   ).textContent = `Member since ${memberDate}`;
 
+  // Update subscription status on Account page
+  updateAccountSubscriptionUI();
+
   switchPage("accountPage");
   showToast("Welcome to your account!", "success");
 }
@@ -1086,6 +1159,13 @@ function playMovieFromModal() {
 
 // Main play movie function
 function playMovie(movie) {
+  const sub = getSubscription();
+  if (!sub || !sub.active) {
+    showToast("Please subscribe to a plan to watch content", "error");
+    switchPage("subscribePage");
+    return;
+  }
+
   if (!movie.videoUrl) {
     showToast("Video not available for this title", "error");
     return;
@@ -1177,6 +1257,8 @@ window.addEventListener("load", () => {
     initializeKeyboardShortcuts();
     initializeParallaxEffect();
     initializeScrollAnimations();
+    initializeSubscriptionPage();
+    updateAccountSubscriptionUI();
 
     // Add tilt effect after movies load
     setTimeout(() => {
@@ -1194,5 +1276,6 @@ window.addEventListener("load", () => {
   } else {
     switchPage("loginPage");
     initializePasswordStrength();
+    initializeSubscriptionPage();
   }
 });
